@@ -1,0 +1,89 @@
+{
+  "artifact_kind": "learning_card_set",
+  "card_set_sha256": "780563b058c7135df3c696f6fd70b9166efb4efa59aa2741ab312b81657e99c0",
+  "cards": [
+    {
+      "bytes": 156258,
+      "file": "png/01_01_cover.png",
+      "height": 2880,
+      "order": 1,
+      "role": "cover",
+      "sha256": "b455746270b3b04c4eee7990f980aef504a5c296c80a56dd5b4f8cf637729fe7",
+      "width": 2160
+    },
+    {
+      "bytes": 236341,
+      "file": "png/01_02_miss.png",
+      "height": 2880,
+      "order": 2,
+      "role": "mechanism",
+      "sha256": "9f90707b0d87a556f88567f39bc52afc6d55d5c6c4d8996deb60626c1a76e9d9",
+      "width": 2160
+    },
+    {
+      "bytes": 234919,
+      "file": "png/01_03_hit.png",
+      "height": 2880,
+      "order": 3,
+      "role": "mechanism",
+      "sha256": "f9c2f6311b4e3ddb4620a08530afa4cffd1f64ddd7f211607d794a6bf90d9c3c",
+      "width": 2160
+    },
+    {
+      "bytes": 314588,
+      "file": "png/01_04_boundary.png",
+      "height": 2880,
+      "order": 4,
+      "role": "mechanism",
+      "sha256": "6e597fd2b31457a3997383a6023e6d41c2fff08dc6d6a4d58b7c07d591101443",
+      "width": 2160
+    }
+  ],
+  "episode_id": "01",
+  "gallery": {
+    "bytes": 958,
+    "file": "01-cards.html",
+    "sha256": "6d2827a044fbbc5869bef58963df189c10047911a698edc0fead396772744a3a"
+  },
+  "manifest_identity_sha256": "f9d924f11d3e145303c2a70e655de23b0c3fa95bd840a7404ec4a5e195a0064b",
+  "provenance": "rendered",
+  "provenance_detail": {
+    "created_at_utc": "2026-10-01T08:32:05.406598+00:00",
+    "renderer": "examples/cache-hit/cards/render_cards.py",
+    "visual_brief": "examples/cache-hit/cards/01-visual-brief.md"
+  },
+  "schema_version": "learning-card-set/v1",
+  "series_slug": "cache-hit",
+  "subject": "缓存命中与失效",
+  "visual": {
+    "resolved_variables": {
+      "background": "#FAF8F3",
+      "border_color": "#E7E1D6",
+      "canvas": {
+        "height": 1440,
+        "width": 1080
+      },
+      "cover_accent": "#D63A2F",
+      "cover_background": "#F4F3EF",
+      "font_system": "正文无衬线；公式与数字等宽",
+      "graphic_language": "technical-diagram",
+      "negative_color": "#B06A5A",
+      "output": {
+        "height": 2880,
+        "width": 2160
+      },
+      "paper_texture": "none",
+      "primary_color": "#7E8B6D",
+      "subject_size": "medium",
+      "whitespace": "clean"
+    },
+    "scope": "full-card-set",
+    "series_skeleton_id": "cache-hit-series-v0",
+    "source_path": "builtin:feynman-notes/visual-v0",
+    "source_sha256": null,
+    "status": "builtin",
+    "strategy_id": "visual-v0",
+    "theme_skin_id": "series-baseline",
+    "version": "v0"
+  }
+}

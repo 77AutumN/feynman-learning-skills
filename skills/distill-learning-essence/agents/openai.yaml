@@ -1,0 +1,4 @@
+interface:
+  display_name: "学习笔记精华"
+  short_description: "把学习材料整理成九百字以内精华，并留存不可覆盖的原稿"
+  default_prompt: "Use $distill-learning-essence to 把已读完的这一节整理成九百字以内的笔记精华，并保存一个新版本。"

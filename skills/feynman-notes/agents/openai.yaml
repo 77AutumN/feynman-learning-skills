@@ -1,0 +1,7 @@
+interface:
+  display_name: "费曼精读与知识卡"
+  short_description: "讲清或整理概念与技术系统，制作可见因果的费曼知识卡"
+  default_prompt: "使用 $feynman-notes 带我读懂一个具体机制；我明确要求整理时，再制作知识卡与费曼自测。"
+
+policy:
+  allow_implicit_invocation: true

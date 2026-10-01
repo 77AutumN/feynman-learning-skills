@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "card-manifest.schema.json",
+  "title": "Learning Card Set Manifest",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "artifact_kind",
+    "series_slug",
+    "episode_id",
+    "subject",
+    "provenance",
+    "visual",
+    "cards",
+    "gallery",
+    "card_set_sha256",
+    "manifest_identity_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "learning-card-set/v1"
+    },
+    "artifact_kind": {
+      "const": "learning_card_set"
+    },
+    "series_slug": {
+      "type": "string",
+      "minLength": 1
+    },
+    "episode_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "type": "string"
+    },
+    "provenance": {
+      "enum": [
+        "rendered",
+        "reconstructed"
+      ]
+    },
+    "visual": {
+      "type": "object",
+      "required": [
+        "strategy_id",
+        "version",
+        "status",
+        "source_path",
+        "source_sha256",
+        "series_skeleton_id",
+        "theme_skin_id",
+        "scope",
+        "resolved_variables"
+      ],
+      "properties": {
+        "strategy_id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "source_path": {
+          "type": "string"
+        },
+        "source_sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "series_skeleton_id": {
+          "type": "string"
+        },
+        "theme_skin_id": {
+          "type": "string"
+        },
+        "scope": {
+          "type": [
+            "string",
+            "array"
+          ]
+        },
+        "resolved_variables": {
+          "type": "object"
+        }
+      }
+    },
+    "cards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "order",
+          "role",
+          "file",
+          "sha256",
+          "bytes",
+          "width",
+          "height"
+        ],
+        "properties": {
+          "order": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "role": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "gallery": {
+      "type": "object",
+      "required": [
+        "file",
+        "sha256"
+      ],
+      "properties": {
+        "file": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "card_set_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "SHA-256 of canonical JSON [{order,sha256}, ...] in card order"
+    },
+    "manifest_identity_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "SHA-256 of canonical JSON containing series, episode, subject, visual, cards and gallery"
+    }
+  }
+}
