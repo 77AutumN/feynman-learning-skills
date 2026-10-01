@@ -27,7 +27,7 @@
 git clone https://github.com/77AutumN/feynman-learning-skills.git
 Set-Location .\feynman-learning-skills
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -X utf8 -m pip install -r requirements.txt
 ```
 
 直接 Python 依赖是 `PyYAML` 和 `jsonschema`，其依赖由 pip 安装。图片由本机 Chromium 浏览器渲染，中文字体随技能提供。渲染器优先找标准位置的 Chrome，其次是 Edge；其他位置可设置 `FEYNMAN_NOTES_EDGE` 为浏览器可执行文件的完整路径。
@@ -41,7 +41,7 @@ python -m venv .venv
 ```text
 先完整读取 skills/feynman-notes/SKILL.md 及它要求的引用。
 带我读 examples/cache-hit/source.md，一轮只讲一个具体问题。
-所有 Python 命令使用本仓库 .venv/Scripts/python.exe。
+所有 Python 命令使用本仓库 .venv/Scripts/python.exe，并加 -X utf8。
 ```
 
 进入自己的项目长期使用时，将两个目录安装到该项目的 `.agents/skills/`：
@@ -78,14 +78,14 @@ $distill-learning-essence 把这一节的已完成笔记整理成 900 字以内�
 在克隆目录运行：
 
 ```powershell
-.\.venv\Scripts\python.exe examples/cache-hit/source.py
-.\.venv\Scripts\python.exe examples/cache-hit/cards/render_cards.py --help
-.\.venv\Scripts\python.exe examples/cache-hit/cards/render_cards.py --list
-.\.venv\Scripts\python.exe examples/cache-hit/cards/render_cards.py 01
-.\.venv\Scripts\python.exe examples/cache-hit/cards/render_cards.py --validate-manifest 01
-.\.venv\Scripts\python.exe skills/distill-learning-essence/scripts/save_draft.py --workspace-root . --series cache-hit --episode 01 --topic "缓存命中" --body-file examples/cache-hit/essence.md --source examples/cache-hit/source.md --source examples/cache-hit/01-cache-hit.md
-.\.venv\Scripts\python.exe -m unittest discover -s skills/distill-learning-essence/tests
-.\.venv\Scripts\python.exe -m unittest discover -s skills/feynman-notes/tests
+.\.venv\Scripts\python.exe -X utf8 examples/cache-hit/source.py
+.\.venv\Scripts\python.exe -X utf8 examples/cache-hit/cards/render_cards.py --help
+.\.venv\Scripts\python.exe -X utf8 examples/cache-hit/cards/render_cards.py --list
+.\.venv\Scripts\python.exe -X utf8 examples/cache-hit/cards/render_cards.py 01
+.\.venv\Scripts\python.exe -X utf8 examples/cache-hit/cards/render_cards.py --validate-manifest 01
+.\.venv\Scripts\python.exe -X utf8 skills/distill-learning-essence/scripts/save_draft.py --workspace-root . --series cache-hit --episode 01 --topic "缓存命中" --body-file examples/cache-hit/essence.md --source examples/cache-hit/source.md --source examples/cache-hit/01-cache-hit.md
+.\.venv\Scripts\python.exe -X utf8 -m unittest discover -s skills/distill-learning-essence/tests
+.\.venv\Scripts\python.exe -X utf8 -m unittest discover -s skills/feynman-notes/tests
 ```
 
 渲染会更新示例中的 PNG、HTML 和 manifest；保存精华会创建第一个空闲的 revision，重复运行不会覆盖旧稿。以上验证只检查示例和文件流程，不能证明你已经理解材料。实际检查结果见 [首版验收记录](docs/validation.md)。
