@@ -98,6 +98,22 @@ class RendererTests(unittest.TestCase):
             for name in names:
                 self.assertEqual("old", (root / name).read_text(encoding="utf-8"))
 
+    def test_failed_manifest_replace_preserves_old_file_and_stale_backup(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            formal = root / "01-card-manifest.json"
+            staged = root / "new.json"
+            stale = root / ".01-card-manifest.backup.json"
+            formal.write_text("old", encoding="utf-8")
+            staged.write_text("new", encoding="utf-8")
+            stale.write_text("stale", encoding="utf-8")
+            with mock.patch.object(renderer.os, "replace", side_effect=PermissionError("locked")):
+                with self.assertRaises(PermissionError):
+                    renderer.commit_staged_manifest("01", root, staged)
+            self.assertEqual("old", formal.read_text(encoding="utf-8"))
+            self.assertEqual("new", staged.read_text(encoding="utf-8"))
+            self.assertEqual("stale", stale.read_text(encoding="utf-8"))
+
 
 if __name__ == "__main__":
     unittest.main()

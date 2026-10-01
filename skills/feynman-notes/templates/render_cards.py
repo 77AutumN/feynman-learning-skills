@@ -1658,22 +1658,7 @@ def commit_staged_episode(
 
 def commit_staged_manifest(ep: str, cards_dir: Path, stage_manifest: Path) -> None:
     """回填旧卡时只原子替换 manifest，不触碰正式 PNG / HTML。"""
-    formal_manifest = cards_dir / f"{ep}-card-manifest.json"
-    backup = cards_dir / f".{ep}-card-manifest.backup.json"
-    had_old = formal_manifest.exists()
-    try:
-        if had_old:
-            os.replace(formal_manifest, backup)
-        os.replace(stage_manifest, formal_manifest)
-    except BaseException:
-        if formal_manifest.exists():
-            formal_manifest.unlink()
-        if had_old and backup.exists():
-            os.replace(backup, formal_manifest)
-        raise
-    else:
-        if backup.exists():
-            backup.unlink()
+    os.replace(stage_manifest, cards_dir / f"{ep}-card-manifest.json")
 
 
 def validate_formal_manifest(ep: str) -> bool:
